@@ -37,9 +37,9 @@ module MUX16_1(mux_input,mux_out,select_lines);
     input [3:0] select_lines;
     wire s0,s1,s2;
     wire [1:0] out;
-    assign s0 = select_lines[0];
-    MUX8_1 mux161(mux_input[15:8],out[0],select_lines[3:1]);
-    MUX8_1 mux162(mux_input[7:0],out[1],select_lines[3:1]);
+    assign s0 = select_lines[3];
+    MUX8_1 mux161(mux_input[15:8],out[0],select_lines[2:0]);
+    MUX8_1 mux162(mux_input[7:0],out[1],select_lines[2:0]);
     MUX2_1 mux163(out,mux_out,s0);
 endmodule
 
@@ -53,6 +53,16 @@ module MUX2_1(mux_input,mux_out,select_lines);
     and(s2,mux_input[1],select_lines);
     or (mux_out,s1,s2);
 endmodule
+module MUX2_1_inv(mux_input,mux_out,select_lines);
+    input [1:0] mux_input;
+    output mux_out;
+    input select_lines;
+    wire s0,s1,s2;
+    not(s0,select_lines);
+    and(s1,mux_input[0],select_lines);
+    and(s2,mux_input[1],s0);
+    or (mux_out,s1,s2);
+endmodule
 
 module MUX4_1(mux_input,mux_out,select_lines);
     input [3:0] mux_input;
@@ -62,9 +72,9 @@ module MUX4_1(mux_input,mux_out,select_lines);
     wire [1:0]out;
     assign s0 = select_lines[0];
     assign s1 = select_lines[1];
-    MUX2_1 mux41(mux_input[3:2],out[0],s1);
-    MUX2_1 mux42(mux_input[1:0],out[1],s1);
-    MUX2_1 mux43(out,mux_out,s0);
+    MUX2_1_inv mux41(mux_input[3:2],out[0],s0);
+    MUX2_1_inv mux42(mux_input[1:0],out[1],s0);
+    MUX2_1 mux43(out,mux_out,s1);
     
 endmodule
 
@@ -74,9 +84,9 @@ module MUX8_1(mux_input,mux_out,select_lines);
     input [2:0] select_lines;
     wire s0,s1,s2;
     wire [1:0] out;
-    assign s0 = select_lines[0];
-    MUX4_1 mux81(mux_input[7:4],out[0],select_lines[2:1]);
-    MUX4_1 mux82(mux_input[3:0],out[1],select_lines[2:1]);
+    assign s0 = select_lines[2];
+    MUX4_1 mux81(mux_input[7:4],out[0],select_lines[1:0]);
+    MUX4_1 mux82(mux_input[3:0],out[1],select_lines[1:0]);
     MUX2_1 mux83(out,mux_out,s0);
 endmodule
 

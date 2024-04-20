@@ -2,8 +2,9 @@
     Module for Memory
 */
 
-module memory(rw,location,out,data);
+module memory(rw,location,out,data,clk);
 input rw;
+input clk;
 input [31:0] data;
 input [1023:0] location;
 output [31:0] out;

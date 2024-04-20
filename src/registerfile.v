@@ -1,12 +1,13 @@
-module registerfile(data,rs1,rs2,rw,out1,out2);
+module registerfile(data,rs1,rs2,rw,out1,out2,clk);
 reg [31:0] reg_file [31:0];
+input clk;
 input [4:0]rd;
 input [31:0] data;
 input rw;
 output [31:0]out;
 reg outbuffer;
 
-always @(rw) begin
+always @(*) begin
     if (rw==1'b1) begin
         reg_file[rs1] = data;
     end
