@@ -43,5 +43,9 @@ endmodule
 module alu_control(instruction,control);
 input [31:0] instruction;
 output [6:0] control;
-assign control = (instruction[6:0] == 7'b0110011) ? (instruction[14:12] == 3'b000) ?(instruction[31:25] == 7'b0000000) ? 7'b0 : 7'b1 : (instruction[14:12] == 3'b100) ? 7'b10 : (instruction[14:12] == 3'b110) ? 7'b11 : (instruction[14:12] == 3'b111) ? 7'b100 :(instruction[14:12] == 3'b001) ? 7'b101 : (instruction[14:12] == 3'b101) ? (instruction[31:25] == 7'b0000000) ? 7'b110 :7'b111: (instruction[14:12] == 3'b010) ? 7'b1000 :7'b1001: 7'b1;
+// reg control_state;
+// always @(instruction) begin
+// control_state <= (instruction[6:0] == 7'b0110011) ? (instruction[14:12] == 3'b000) ?(instruction[31:25] == 7'b0000000) ? 7'b0 : 7'b1 : (instruction[14:12] == 3'b100) ? 7'b10 : (instruction[14:12] == 3'b110) ? 7'b11 : (instruction[14:12] == 3'b111) ? 7'b100 :(instruction[14:12] == 3'b001) ? 7'b101 : (instruction[14:12] == 3'b101) ? (instruction[31:25] == 7'b0000000) ? 7'b110 :7'b111: (instruction[14:12] == 3'b010) ? 7'b1000 :7'b1001: 7'b1;
+// end
+assign control= (instruction[6:0] == 7'b0110011) ? (instruction[14:12] == 3'b000) ?(instruction[31:25] == 7'b0000000) ? 7'b0 : 7'b1 : (instruction[14:12] == 3'b100) ? 7'b10 : (instruction[14:12] == 3'b110) ? 7'b11 : (instruction[14:12] == 3'b111) ? 7'b100 :(instruction[14:12] == 3'b001) ? 7'b101 : (instruction[14:12] == 3'b101) ? (instruction[31:25] == 7'b0000000) ? 7'b110 :7'b111: (instruction[14:12] == 3'b010) ? 7'b1000 :7'b1001: 7'b0;
 endmodule

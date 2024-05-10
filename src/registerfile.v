@@ -8,14 +8,14 @@ input [31:0] data;
 input rw;
 output [31:0]out1;
 output [31:0]out2;
-reg outbuffer1;
-reg outbuffer2;
+reg [31:0]outbuffer1;
+reg [31:0]outbuffer2;
 
 initial begin
     reg_file[0] = 32'b0;
     reg_file[1] = 32'b0;
-    reg_file[2] = 32'b0;
-    reg_file[3] = 32'b0;
+    reg_file[2] = 32'b1;
+    reg_file[3] = 32'b1;
     reg_file[4] = 32'b0;
     reg_file[5] = 32'b0;
     reg_file[6] = 32'b0;
@@ -46,7 +46,7 @@ initial begin
     reg_file[31] = 32'b0;
 end
 
-always @(posedge clk) begin
+always @(*) begin
     if (rw==1'b1 && rsd!=1'b0) begin
         reg_file[rsd] <= data;
         $display("wrote %d to %d reg",data,rsd);

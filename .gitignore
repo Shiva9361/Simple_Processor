@@ -1,0 +1,4 @@
+*.out
+*.vvp
+work
+vsim.wlf

@@ -1,6 +1,6 @@
 module datapath(clk);
 input clk;
-wire [31:0] pc_wire, instruction,useless,write_data,read_data1,read_data2,alu_output,memory_out,alu_2_input,immediate;
+wire [31:0] pc_wire, instruction,write_data,read_data1,read_data2,alu_output,memory_out,alu_2_input,immediate;
 wire mem_read,mem_to_reg,reg_write,mem_write,alu_src;
 wire [6:0] alu_control_s;
 program_counter pc(pc_wire,clk);
@@ -26,7 +26,7 @@ datapath dp(clk);
 
 initial begin
     
-    clk = 0;
+    #100 clk = 0;
     #100 clk = 1;
     #100 clk = 0;
     #100 clk = 1;
