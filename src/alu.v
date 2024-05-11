@@ -17,6 +17,12 @@ right_shifter_arith rightshifterarith(input1,input2,mux_input8);
 set_less_than setlessthan(input1,input2,mux_input9);
 set_less_than_u setlessthanu(input1,input2,mux_input10);
 
+assign mux_input11 =0;
+assign mux_input12 =0;
+assign mux_input13 =0;
+assign mux_input14 =0;
+assign mux_input15 =0;
+assign mux_input16 =0;
 
 MUX16_1_32 mux(mux_input1,mux_input2,mux_input3,mux_input4,mux_input5,mux_input6,mux_input7,mux_input8,mux_input9,mux_input10,mux_input11,mux_input12,mux_input13,mux_input14,mux_input15,mux_input16,out,control[3:0]);
 
