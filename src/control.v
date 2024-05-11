@@ -36,13 +36,6 @@ always @(*) begin
             mem_write_state = 0;
             alu_src_state = 0;
         end
-        7'b000011: begin 
-            mem_read_state = 1;
-            mem_to_reg_state = 0;
-            reg_write_state = 0;
-            mem_write_state = 0;
-            alu_src_state = 0;
-        end
     endcase
 end
 
